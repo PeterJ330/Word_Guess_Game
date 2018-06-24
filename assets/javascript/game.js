@@ -28,7 +28,7 @@ var doubleBonus = [
     "Street Fighter",
     "Paper Boy"
    ]
-// ================   Variables   =====================================================================
+// ================   variables   =====================================================================
 
 var wins = 0
 var guessLeft = placeholder
@@ -36,7 +36,27 @@ var guessed = placeholder
 
 
 
+// ================   logic   ==========================================================================
+
+document.onkeyup = function(event) {
+    console.log(event);
+}
+
+   
+var computerGuess = words[Math.floor(Math.random() * words.length)];
 
 
-   var computerGuess = computerChoices[Math.floor(Math.random() * computerChoices.length)];
+
+
+
+
+
+// ================   html   =============================================================================
+
+var html = 
+//"<h4> Level: "  </h4>"
+"<p> Wins: " + wins + " </p>" +
+"<p> Guesses Remaining: " + guessLeft + " </p>" +
+"<p> Letters Already Guessed: " + guessed + " </p>";
+
 
