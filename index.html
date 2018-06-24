@@ -3,11 +3,17 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Page Title</title>
+    <title>Word Guess</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="assets/css/reset.css">
+    
+
+    <!-- reset.css -->
+    <!-- <link rel="stylesheet" href="assets/css/reset.css"> -->
+    <!-- style.css -->
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/javascript/game.js">
+    <!-- game.js -->
+    <script src="assets/javascript/game.js"></script>
+    
 </head>
 <body>
     <header>
@@ -16,12 +22,16 @@
 
         <h1>HANGMAN</h1>
         <h3>Arcade Classics Edition</h3>
-        <h5>Pressy Any Key To Begin </h5>
+        <h5 id="game"> Press Any Key To Begin </h5>
+        <!-- <h5 id="guessed"> Press Any Key To Begin </h5> -->
 
         <h4> Level </h4>
         <p> Wins </p>
         <p> Guesses Remaining </p>
-        <p> Letters Already Guessed </p>
+        <!-- <p id="guessed"> Letters Already Guessed: "function(event)" </p> -->
+        <p> Letters Already Guessed: <div id="guessed"></div> </p>
+
+        
 
 
 
