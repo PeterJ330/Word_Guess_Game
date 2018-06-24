@@ -40,10 +40,6 @@ var guessed = "placeholder" ;
 //function wordLength() {
     //words.findIndex() }
 
-
-
-
-
 // ================   logic   ==========================================================================
 
 document.onkeyup = function(event) {
@@ -56,9 +52,17 @@ document.onkeyup = function(event) {
 
 // Randomly chooses a choice from the options array. This is the word the user is trying to guess. 
 var computerGuess = words[Math.floor(Math.random() * words.length)];
+console.log(computerGuess)
+
 // Calculates initial # of guesses by adding the string length of the value the computerGuess variable returns
 // to 50% of that string length and rounding up to nearest integer
 var guessLeft = Math.ceil(computerGuess.length + (computerGuess.length * 0.5));
+
+// Sets the # of guesses to the length of the word
+//var guessLeft = computerGuess.length ;
+
+// Sets the number of guesses to 1/2 the word length and rounds up to nearest integer
+//var guessLeft = Math.ceil((computerGuess.length * 0.5) + 1);
 
 
 
@@ -68,14 +72,15 @@ var html =
 "<p> Level: " + level + "  </p>" +
 "<p> Wins: " + wins + " </p>" +
 "<p> Guesses Remaining: " + guessLeft + " </p>" +
-// "<p> Letters Already Guessed: <div id="guessed"></div>: " + guessed + "</p>"; 
-//"<p> #guessed: " + guessed + " </p>";
-"<p> Letters Already Guessed: " + guessed + " </p>";
+"<p> Letters Already Guessed: " + userGuess + " </p>";
 
-
-document.querySelector("#game").innerHTML = html;
+    newFunction(html);
 // document.querySelector("#guessed").innerHTML = html;
 
 };
 
+
+function newFunction(html) {
+    document.querySelector("#game").innerHTML = html;
+}
 
