@@ -64,12 +64,12 @@ document.onkeyup = function(event) {
         "<p> Word: " + randWord + "  </p>" ;
             document.querySelector("#game").innerHTML = htmlone;
 
-    var html = 
-        "<p> Level: " + level + "  </p>" +
-        "<p> Wins: " + wins + " </p>" +
-        "<p> Guesses Remaining: " + guessLeft + " </p>" +
-        "<p> Letters Already Guessed: " + " " + " </p>";
-            document.querySelector("#showtext").innerHTML = html;
+    // var html = 
+    //     "<p> Level: " + level + "  </p>" +
+    //     "<p> Wins: " + wins + " </p>" +
+    //     "<p> Guesses Remaining: " + guessLeft + " </p>" +
+    //     "<p> Letters Already Guessed: " + " " + " </p>";
+    //         document.querySelector("#showtext").innerHTML = html;
     
 
 // var randWord = words[Math.floor(Math.random() * words.length)];
@@ -95,22 +95,22 @@ document.onkeyup = function(event) {
 
 if (randWord.includes(userGuess)) {
     console.log(userGuess);
-    // var html = 
-    //     "<p> Level: " + level + "  </p>" +
-    //     "<p> Wins: " + wins + " </p>" +
-    //     "<p> Guesses Remaining: " + guessLeft + " </p>" +
-    //     "<p> Letters Already Guessed: " + " " + " </p>";
-    //     document.querySelector("#showtext").innerHTML = html;
+    var html = 
+        "<p> Level: " + level + "  </p>" +
+        "<p> Wins: " + wins + " </p>" +
+        "<p> Guesses Remaining: " + guessLeft + " </p>" +
+        "<p> Letters Already Guessed: " + " " + " </p>";
+        document.querySelector("#showtext").innerHTML = html;
 
 }
 else {
     guessLeft -- ;
-        // var html1 = 
-        // "<p> Level: " + level + "  </p>" +
-        // "<p> Wins: " + wins + " </p>" +
-        // "<p> Guesses Remaining: " + guessLeft + " </p>" +
-        // "<p> Letters Already Guessed: " + userGuess + " </p>";
-        // document.querySelector("#showtext").innerHTML = html1; 
+        var html1 = 
+        "<p> Level: " + level + "  </p>" +
+        "<p> Wins: " + wins + " </p>" +
+        "<p> Guesses Remaining: " + guessLeft + " </p>" +
+        "<p> Letters Already Guessed: " + userGuess + " </p>";
+        document.querySelector("#showtext").innerHTML = html1; 
 
  
 };
