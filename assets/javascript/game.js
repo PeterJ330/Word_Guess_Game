@@ -43,17 +43,15 @@ var guessLeft = 6 ;
 
 // ================   logic   ==========================================================================
 
-document.onkeyup = function(event) {
-    console.log(event);
 
-// Determines which key was pressed.
-    var userGuess = event.key;
-    
-    // 
-    //document.getElementById("guessed").innerHTML = userGuess;  
+// document.onkeyup = function(event) {
+    // console.log(event);
+
+ // Determines which key was pressed.
+    // var userGuess = event.key;
     
 
-// Randomly chooses a choice from the options array. This is the word the user is trying to guess. 
+// Randomly chooses a value from the words array. This is the word the user is trying to guess. 
 var randWord = words[Math.floor(Math.random() * words.length)];
 console.log(randWord);
 
@@ -68,26 +66,47 @@ console.log(randWord);
                     //var guessLeft = Math.ceil((randWord.length * 0.5) + 1);
 
 
+document.onkeyup = function(event) {
+    console.log(event);
+
+// Determines which key was pressed.
+    var userGuess = event.key;
+
 if (randWord.includes(userGuess)) {
     console.log(userGuess);
+    var html = 
+        "<p> Level: " + level + "  </p>" +
+        "<p> Wins: " + wins + " </p>" +
+        "<p> Guesses Remaining: " + guessLeft + " </p>" +
+        "<p> Letters Already Guessed: " + " " + " </p>";
+        document.querySelector("#game").innerHTML = html;
+
 }
 else {
     guessLeft -- ;
-    //document.getElementById("guessed").innerHTML = userGuess;  
-}
+        var html1 = 
+        "<p> Level: " + level + "  </p>" +
+        "<p> Wins: " + wins + " </p>" +
+        "<p> Guesses Remaining: " + guessLeft + " </p>" +
+        "<p> Letters Already Guessed: " + userGuess + " </p>";
+        document.querySelector("#game").innerHTML = html1; 
+
+ 
+};
 
 
 
 // ================   html   =============================================================================
 
-var html = 
-"<p> Level: " + level + "  </p>" +
-"<p> Wins: " + wins + " </p>" +
-"<p> Guesses Remaining: " + guessLeft + " </p>" +
-"<p> Letters Already Guessed: " + userGuess + " </p>";
+// var html = 
+// "<p> Level: " + level + "  </p>" +
+// "<p> Wins: " + wins + " </p>" +
+// "<p> Guesses Remaining: " + guessLeft + " </p>" +
+// "<p> Letters Already Guessed: " + userGuess + " </p>";
 
-document.querySelector("#game").innerHTML = html;
-// document.querySelector("#guessed").innerHTML = html;
+// document.querySelector("#game").innerHTML = html;
+
+    // document.querySelector("#guessed").innerHTML = html;
 
 };
 
