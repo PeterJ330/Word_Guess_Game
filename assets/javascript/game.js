@@ -33,7 +33,8 @@ var doubleBonus = [
 var level = "placeholder" ;
 var wins = 0 ;
 var i = 0 ;
-var guessed = "placeholder" ;
+var guessLeft = 6 ;
+//var guessed = "placeholder" ;
 
 
 
@@ -48,21 +49,32 @@ document.onkeyup = function(event) {
 // Determines which key was pressed.
     var userGuess = event.key;
     
-    document.getElementById("guessed").innerHTML = userGuess;  
+    // 
+    //document.getElementById("guessed").innerHTML = userGuess;  
+    
 
 // Randomly chooses a choice from the options array. This is the word the user is trying to guess. 
-var computerGuess = words[Math.floor(Math.random() * words.length)];
-console.log(computerGuess)
+var randWord = words[Math.floor(Math.random() * words.length)];
+console.log(randWord);
 
-// Calculates initial # of guesses by adding the string length of the value the computerGuess variable returns
-// to 50% of that string length and rounding up to nearest integer
-var guessLeft = Math.ceil(computerGuess.length + (computerGuess.length * 0.5));
+                    // Calculates initial # of guesses by adding the string length of the value the randWord variable returns
+                    // to 50% of that string length and rounding up to nearest integer
+                    //var guessLeft = Math.ceil(randWord.length + (randWord.length * 0.5));
 
-// Sets the # of guesses to the length of the word
-//var guessLeft = computerGuess.length ;
+                    // Sets the # of guesses to the length of the word
+                    //var guessLeft = randWord.length ;
 
-// Sets the number of guesses to 1/2 the word length and rounds up to nearest integer
-//var guessLeft = Math.ceil((computerGuess.length * 0.5) + 1);
+                    // Sets the number of guesses to 1/2 the word length and rounds up to nearest integer
+                    //var guessLeft = Math.ceil((randWord.length * 0.5) + 1);
+
+
+if (randWord.includes(userGuess)) {
+    console.log(userGuess);
+}
+else {
+    guessLeft -- ;
+    //document.getElementById("guessed").innerHTML = userGuess;  
+}
 
 
 
@@ -74,13 +86,9 @@ var html =
 "<p> Guesses Remaining: " + guessLeft + " </p>" +
 "<p> Letters Already Guessed: " + userGuess + " </p>";
 
-    newFunction(html);
+document.querySelector("#game").innerHTML = html;
 // document.querySelector("#guessed").innerHTML = html;
 
 };
 
-
-function newFunction(html) {
-    document.querySelector("#game").innerHTML = html;
-}
 
