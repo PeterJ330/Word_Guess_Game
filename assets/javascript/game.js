@@ -34,49 +34,58 @@ var level = "*placeholder*" ;
 var wins = 0 ;
 var i = 0 ;
 var guessLeft = 6 ;
+var space = " _ ";
+var correctLetter = 0;
+var wrongLetter = 0;
+
 //var guessed = "placeholder" ;
-
-
 
 //function wordLength() {
     //words.findIndex() }
 
 // ================   logic   ==========================================================================
 
-
-    
 // ****** add some kind of loop here so that when the user has selected all
 //        letters in the string a new word will be selected????     *********
 
 
-// Randomly chooses a value from the words array. This is the word the user is trying to guess. 
-
-
 document.onkeyup = function(event) {
-    
-    var randWord = event.key;
-        console.log(event);
+        var randWord = event.key;
+                    console.log(event);
 
-    var randWord = words[Math.floor(Math.random() * words.length)];
-        console.log(randWord);
-    
-    var htmlone = 
-        "<p> Word: " + randWord + "  </p>" ;
-            document.querySelector("#game").innerHTML = htmlone;
+        // value for "var randWord" is randomly selected from wordsArray
+        var randWord = words[Math.floor(Math.random() * words.length)];
+            console.log(randWord);
+                    console.log(event);
+        
+        // splits randWord string into an array named charArr
+        var charArr = randWord.split("");
+                    console.log(charArr);
+        
+        // creates "var oldStr" to repeat "var space" string an amount equal to "var randWord" string length
+        var oldStr = space.repeat(randWord.length);
+                    console.log(event);
+        
+        // displays "var oldStr" in the html
+        var html = 
+            "<p> Word: " + oldStr + "  </p>" ;
+                document.querySelector("#game").innerHTML = html;
 
-    // var html = 
-    //     "<p> Level: " + level + "  </p>" +
-    //     "<p> Wins: " + wins + " </p>" +
-    //     "<p> Guesses Remaining: " + guessLeft + " </p>" +
-    //     "<p> Letters Already Guessed: " + " " + " </p>";
-    //         document.querySelector("#showtext").innerHTML = html;
-    
+       
+                document.querySelector("#level").innerHTML = "Level: " + level + " " ;
+                document.querySelector("#wins").innerHTML = "Wins: " + wins + " ";
+                document.querySelector("#guessRemaining").innerHTML = "Guesses Remaining: " + guessLeft + " " ;
+                document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " 
+                
 
-// var randWord = words[Math.floor(Math.random() * words.length)];
-// console.log(randWord);
+  // ***************************************************************************************************************************************************************************************************
+       
+        // different methods for generating the number of guesses (var guessLeft) based on the word length.....
+
+                    // var randWord = words[Math.floor(Math.random() * words.length)];
 
                     // Calculates initial # of guesses by adding the string length of the value the randWord variable returns
-                    // to 50% of that string length and rounding up to nearest integer
+                        // to 50% of that string length and rounding up to nearest integer
                     //var guessLeft = Math.ceil(randWord.length + (randWord.length * 0.5));
 
                     // Sets the # of guesses to the length of the word
@@ -85,51 +94,68 @@ document.onkeyup = function(event) {
                     // Sets the number of guesses to 1/2 the word length and rounds up to nearest integer
                     //var guessLeft = Math.ceil((randWord.length * 0.5) + 1);
 
+// ***************************************************************************************************************************************************************************************************
+
+
+
 document.onkeyup = function(event) {
-    console.log(event);
-    console.log(randWord);
+    //console.log(event.key);
+    //console.log(randWord);
 
-// Determines which key was pressed.
-    var userGuess = event.key.toUpperCase();
-    //userGuess.value = userGuess.value.toUpperCase();
+    // Determines which key was pressed. Make it uppercase
+        var userGuess = event.key.toUpperCase();
+            console.log(userGuess);
 
-if (randWord.includes(userGuess)) {
-    console.log(userGuess);
-    var html = 
-        "<p> Level: " + level + "  </p>" +
-        "<p> Wins: " + wins + " </p>" +
-        "<p> Guesses Remaining: " + guessLeft + " </p>" +
-        "<p> Letters Already Guessed: " + " " + " </p>";
-        document.querySelector("#showtext").innerHTML = html;
-
-}
-else {
-    guessLeft -- ;
-        var html1 = 
-        "<p> Level: " + level + "  </p>" +
-        "<p> Wins: " + wins + " </p>" +
-        "<p> Guesses Remaining: " + guessLeft + " </p>" +
-        "<p> Letters Already Guessed: " + userGuess + " </p>";
-        document.querySelector("#showtext").innerHTML = html1; 
-
- 
-};
+    
+    if (randWord.includes(userGuess)) {
+            correctLetter ++ ; 
+                console.log("Right" + " " + correctLetter);
 
 
+    // *************************************************************************************************************************************************************************************************** 
+    
+            //tyring to figure out how to replcae blanks with correct user selections  
+                        // function strReplace () {
+                        //     return newStr
+                        //     var oldStr = space.repeat(blanks);
+                        //     var newStr = oldStr.replace( space , userGuess)
+                        // }
+                        // strReplace( oldStr , newStr);
 
-// ================   html   =============================================================================
+    // ***************************************************************************************************************************************************************************************************
 
-// var html = 
-// "<p> Level: " + level + "  </p>" +
-// "<p> Wins: " + wins + " </p>" +
-// "<p> Guesses Remaining: " + guessLeft + " </p>" +
-// "<p> Letters Already Guessed: " + userGuess + " </p>";
+    
+            document.querySelector("#level").innerHTML = "Level: " + level + " " ;
+            document.querySelector("#wins").innerHTML = "Wins: " + wins + " ";
+            document.querySelector("#guessRemaining").innerHTML = "Guesses Remaining: " + guessLeft + " " ;
+            document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " ;
 
-// document.querySelector("#game").innerHTML = html;
 
-    // document.querySelector("#guessed").innerHTML = html;
+        
 
-}
-};
+    }
+    else {
+        guessLeft -- ;
+        wrongLetter ++ ;
+            console.log("Wrong" +" "+ wrongLetter);
+        
+
+            document.querySelector("#level").innerHTML = "Level: " + level + " " ;
+            document.querySelector("#wins").innerHTML = "Wins: " + wins + " ";
+            document.querySelector("#guessRemaining").innerHTML = "Guesses Remaining: " + guessLeft + " " ;
+            document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " 
+            document.querySelector("#letters").innerHTML += userGuess + "  " + "  " + "  " ;
+            
+    };
+
+   
+
+
+
+
+
+
+    }
+    };
 
 
