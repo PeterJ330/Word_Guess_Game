@@ -30,27 +30,28 @@ var doubleBonus = [
    ]
 // ================   variables   =====================================================================
 
-function updateLevel() {
-    for(var i=0; i<arguments.length; i++){
-        this.level += arguments[i];
-    }
-    return this.wins;
-}
-function updateGuesses() {
-    for(var i=0; i<arguments.length; i++){
-        this.guessLeft += arguments[i];
-    }
-    return this.guessLeft;
-}
+// function updateLevel() {
+//     for(var i=0; i<arguments.length; i++){
+//         this.level += arguments[i];
+//     }
+//     return this.wins;
+// }
+// function updateGuesses() {
+//     for(var i=0; i<arguments.length; i++){
+//         this.guessLeft += arguments[i];
+//     }
+//     return this.guessLeft;
+// }
 
 var game = {
     level: 1 , 
     wins: 0 ,
     i: 0 ,
     guessLeft: 6 ,
-    space: " _ " ,
+    space: "_" ,
     correctLetter: 0 ,
-    wrongLetter: 0
+    wrongLetter: 0,
+    //placeHolder: game.space.repeat(randWord.length)
 };
 
 
@@ -83,23 +84,33 @@ document.onkeyup = function doFirst(event) {
             console.log(randWord);
             console.log(randWord.length);
                     //console.log(event);
-        
+
         // splits randWord string into an array named charArr
         var charArr = randWord.split("");
                     console.log(charArr);
         
-        // creates "var oldStr" to repeat "var space" string an amount equal to "var randWord" string length
-        var oldStr = game.space.repeat(randWord.length);
-                    console.log(oldStr);
-        
-        // displays "var oldStr" in the html
+        // creates "var placeHolder" to repeat "var space" string an amount equal to "var randWord" string length
+            var placeHolder = game.space.repeat(randWord.length);
+                    console.log(placeHolder);
+                    
+                //  var placeHolderArr = placeHolder.trim().split("");
+                //         console.log(placeHolderArr);
+
+                        // var tester = placeHolder.split("");
+                        //     console.log(tester);
+
+        // displays "var placeHolder" in the html
         var html = 
-            "<p> Word: " + charArr + "  </p>" ;
+            "<p> Word: " + randWord + "  </p>" ;
                 document.querySelector("#game").innerHTML = html;
 
-        // var html = 
-        // "<p> Word: " + charArr + "  </p>" ;
-        //     document.querySelector("#game").innerHTML = html;
+        var test = 
+        "<p> Word: " + placeHolder + "  </p>" ;
+            document.querySelector("#testing").innerHTML = test;
+
+            // var test = 
+            // "<p> Word: " + placeHolder + "  </p>" ;
+            //     document.querySelector("#testing").innerHTML = test;
 
        
                 document.querySelector("#level").innerHTML = "Level: " + game.level + " " ;
@@ -108,7 +119,7 @@ document.onkeyup = function doFirst(event) {
                 document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " 
                 
 
-  // ***************************************************************************************************************************************************************************************************
+// ***************************************************************************************************************************************************************************************************
        
         // different methods for generating the number of guesses (var guessLeft) based on the word length.....
 
@@ -133,40 +144,89 @@ document.onkeyup = function doFirst(event) {
             //console.log(randWord);
 
             // Determines which key was pressed. Make it uppercase
-                var userGuess = event.key.toUpperCase();
-                    console.log("User Guess: "+ userGuess);    
-    
-        if (charArr.includes(userGuess)) {
-                    game.correctLetter++ ; 
-                        console.log("Number Correct "+ game.correctLetter);
-                        //console.log(game.correctLetter);
+            var userGuess = event.key.toUpperCase();
+                console.log("User Guess: "+ userGuess);   
+
+
+                var tester = placeHolder.split("");
+                console.log(tester);
+
+                        var test = 
+                        "<p> Word: " + tester + "  </p>" ;
+                            document.querySelector("#testing").innerHTML = test;
+
+
+                            for (i=0; i < randWord.length ; i++) {
+                                if (userGuess == randWord[i]) {
+                                        const newString = tester.replace(tester[i], userGuess);
+                                            console.log(newString);
+                                }
+                            }
+
+                    // function textSwapper() {
+                    //     if (randWord.getAttribute("data-text-swap") == randWord.innerHTML){
+                    //         randWord.innerHTML = randWord.getAttribute("data-text-original");
+                    //     } else {
+                    //         randWord.setAttribute("data-text-original", randWord.innerHTML);
+                    //         randWord.innerHTML = randWord.getAttribute("data-text-swap");
+                            
+                    //         } }
+                    //         console.log(textSwapper);
                     
+                    
+                    // function textSwap() {
+                    // if (placeHolder.getAttribute("data-text-swap") == placeHolder.innerHTML){
+                    //     placeHolder.innerHTML = placeHolder.getAttribute("data-text-original");
+                    // } else {
+                    //     placeHolder.setAttribute("data-text-original", placeHolder.innerHTML);
+                    //     placeHolder.innerHTML = placeHolder.getAttribute("data-text-swap");
+                        
+                    //     } }
+                    //         console.log(textSwap);
 
+                           // textSwap();
+                       //textSwapper();
 
-            // *************************************************************************************************************************************************************************************************** 
+                // if (placeHolder.getAttribute("data-text-swap") == placeHolder.innerHTML){
+                //     placeHolder.innerHTML = placeHolder.getAttribute("data-text-original");
+                // } else {
+                //     placeHolder.setAttribute("data-text-original", placeHolder.innerHTML);
+                //     placeHolder.innerHTML = placeHolder.getAttribute("data-text-swap");
+
+                //     }
+
+                if (randWord.includes(userGuess)) {
+                            game.correctLetter++ ; 
+                                console.log("Number Correct "+ game.correctLetter);
+                                //console.log(game.correctLetter);
+                        
+                        // for (i=0; i < randWord.length ; i++) {
+                        //     if (userGuess == randWord[i]) {
+                        //             const newString = tester.replace(tester[i], userGuess);
+                        //                 console.log(newString);
+                        //     }
+                        // }
+
+// *************************************************************************************************************************************************************************************************** 
             
                     //tyring to figure out how to replcae blanks with correct user selections  
                                 // function strReplace () {
                                 //     return newStr
-                                //     var oldStr = space.repeat(blanks);
-                                //     var newStr = oldStr.replace( space , userGuess)
+                                //     var placeHolder = space.repeat(blanks);
+                                //     var newStr = placeHolder.replace( space , userGuess)
                                 // }
-                                // strReplace( oldStr , newStr);
-
-            // ***************************************************************************************************************************************************************************************************
+                                // strReplace( placeHolder , newStr);
+                                
+// ***************************************************************************************************************************************************************************************************
                         
             
                     document.querySelector("#level").innerHTML = "Level: " + game.level + " " ;
                     document.querySelector("#wins").innerHTML = "Wins: " + game.wins + " ";
                     document.querySelector("#guessRemaining").innerHTML = "Guesses Remaining: " + game.guessLeft + " " ;
                     document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " ;
-
-
-            }
-
-           else {
+            } else {
                 game.guessLeft-- ;
-                //game.wrongLetter++ ;
+                game.wrongLetter++ ;
                     //console.log("Number Wrong "+ game.wrongLetter);
                     //console.log(game.guessLeft);
                 
@@ -175,9 +235,11 @@ document.onkeyup = function doFirst(event) {
                     document.querySelector("#wins").innerHTML = "Wins: " + game.wins + " ";
                     document.querySelector("#guessRemaining").innerHTML = "Guesses Remaining: " + game.guessLeft + " " ;
                     document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " 
-                    document.querySelector("#letters").innerHTML += userGuess + "  " + "  " + "  " ;
-                    
-            }
+                    document.querySelector("#letters").innerHTML += userGuess + "  " + "  " + "  " ;   
+                }
+
+
+           
 
             if (game.guessLeft === 0) {
                 alert("YOU LOSE!");
@@ -195,6 +257,7 @@ document.onkeyup = function doFirst(event) {
                 //document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " ; 
                 game.guessLeft = 6 ;
                 game.correctLetter = 0; 
+                game.wrongLetter = 0 ;
                     console.log("guessLeft: "+ game.guessLeft);
                     console.log("correctLetter: "+ game.correctLetter);
                     doFirst(event);
@@ -214,9 +277,11 @@ document.onkeyup = function doFirst(event) {
                 
                 game.guessLeft = 6 ;
                 game.correctLetter = 0 ;
+                game.wrongLetter = 0 ; 
                 game.wins = 0 ;
                 game.level = 0 ;
                 doFirst(event);
+                //userGuess.defaultValue;
             }
             else {
                 document.write("Thank You For Playing");
