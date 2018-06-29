@@ -152,14 +152,21 @@ document.onkeyup = function doFirst(event) {
                 console.log(tester);
 
                         var test = 
-                        "<p> Word: " + tester + "  </p>" ;
-                            document.querySelector("#testing").innerHTML = test;
-
+                            "<p> Word: " + tester + "  </p>" ;
+                                document.querySelector("#testing").innerHTML = test;
 
                             for (i=0; i < randWord.length ; i++) {
                                 if (userGuess == randWord[i]) {
-                                        const newString = tester.replace(tester[i], userGuess);
+
+                                    function textSwap() {
+                                        var newString = "tester".replace("tester"[i], userGuess);
                                             console.log(newString);
+                                    }
+                                    textSwap();
+
+                                         var test = 
+                                            "<p> Word: " + tester + "  </p>" ;
+                                            document.querySelector("#testing").innerHTML = test;
                                 }
                             }
 
