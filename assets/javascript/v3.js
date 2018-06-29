@@ -81,8 +81,7 @@ document.onkeyup = function doFirst(event) {
         // value for "var randWord" is randomly selected from wordsArray
         var randWord = words[Math.floor(Math.random() * words.length)];
             console.log(randWord);
-            console.log(randWord.length);
-                    //console.log(event);
+                    console.log(event);
         
         // splits randWord string into an array named charArr
         var charArr = randWord.split("");
@@ -90,11 +89,11 @@ document.onkeyup = function doFirst(event) {
         
         // creates "var oldStr" to repeat "var space" string an amount equal to "var randWord" string length
         var oldStr = game.space.repeat(randWord.length);
-                    console.log(oldStr);
+                    console.log(event);
         
         // displays "var oldStr" in the html
         var html = 
-            "<p> Word: " + charArr + "  </p>" ;
+            "<p> Word: " + oldStr + "  </p>" ;
                 document.querySelector("#game").innerHTML = html;
 
         // var html = 
@@ -129,17 +128,17 @@ document.onkeyup = function doFirst(event) {
 
 
         document.onkeyup = function doSecond(event) {
-            console.log(event.key);
+            //console.log(event.key);
             //console.log(randWord);
 
             // Determines which key was pressed. Make it uppercase
                 var userGuess = event.key.toUpperCase();
-                    console.log("User Guess: "+ userGuess);    
+                    console.log(userGuess);    
     
-        if (charArr.includes(userGuess)) {
+        if (randWord.includes(userGuess)) {
                     game.correctLetter++ ; 
-                        console.log("Number Correct "+ game.correctLetter);
-                        //console.log(game.correctLetter);
+                        console.log("Right" + " " + game.correctLetter);
+                        console.log(game.correctLetter);
                     
 
 
@@ -166,9 +165,9 @@ document.onkeyup = function doFirst(event) {
 
            else {
                 game.guessLeft-- ;
-                //game.wrongLetter++ ;
-                    //console.log("Number Wrong "+ game.wrongLetter);
-                    //console.log(game.guessLeft);
+                game.wrongLetter++ ;
+                    console.log("Wrong" +" "+ game.wrongLetter);
+                    console.log(game.guessLeft);
                 
 
                     document.querySelector("#level").innerHTML = "Level: " + game.level + " " ;
@@ -179,50 +178,25 @@ document.onkeyup = function doFirst(event) {
                     
             }
 
-            if (game.guessLeft === 0) {
-                alert("YOU LOSE!");
-                console.log("YOU LOSE!");
-                youLose();
-
-            }
-
             if (game.correctLetter === randWord.length) {
                 //console.log("YOU WIN!");
-                game.wins++ ;
                 alert("YOU WIN!");
-                console.log("YOU WIN!");
-                //defaultValue(one); 
-                //document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " ; 
-                game.guessLeft = 6 ;
-                game.correctLetter = 0; 
-                    console.log("guessLeft: "+ game.guessLeft);
-                    console.log("correctLetter: "+ game.correctLetter);
-                    doFirst(event);
-                         
+                console.log(randWord.length);   
+                game.wins++ ;         
             }
 
+         
 
-            if (game.wins === 5 || game.wins === 10 || game.wins === 15 ) {
+        
+        else if (game.guessLeft == 0) {
+                alert("YOU LOSE!")
+
+            }
+
+        //     if (this.wins == 5 || this.wins == 10 || this.wins == 15 ) {
                     
-                game.level++;
-        }
-
-        function youLose(){
-            var tryAgain = confirm("Try Again?");
-
-            if (tryAgain) {
-                
-                game.guessLeft = 6 ;
-                game.correctLetter = 0 ;
-                game.wins = 0 ;
-                game.level = 0 ;
-                doFirst(event);
-            }
-            else {
-                document.write("Thank You For Playing");
-            }
-
-        }
+        //         this.level++;
+        // }
 
 
         
@@ -230,8 +204,8 @@ document.onkeyup = function doFirst(event) {
 
     }}
 
-   // updateLevel.apply(game, [i]);
-   // updateGuesses.apply(game, [6,]);
-   // doFirst();
+    //updateLevel.apply(game, [1,2,3]);
+   // updateGuesses.apply(game, [6,6,6,6]);
+    //doFirst();
 
 
