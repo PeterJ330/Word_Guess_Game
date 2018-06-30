@@ -62,7 +62,7 @@ var displayWord =
 document.querySelector("#wins").innerHTML = "Wins: " + game.wins + " ";
 document.querySelector("#guessRemaining").innerHTML = "Guesses Remaining: " + game.guessLeft + " " ;
 document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " ;
-//document.querySelector("#letters").innerHTML = game.alreadyGuessed + "  " + "  " + "  " ;   
+document.querySelector("#letters").innerHTML = game.alreadyGuessed + "  " + "  " + "  " ;   
  
 //******** begins guessing portion of game *****************
 document.onkeyup = function doSecond(e) {
@@ -82,15 +82,15 @@ var userGuess = e.key.toUpperCase();
         }
     }
 
-    for (j=0; j <= game.alreadyGuessed.length; j++){
-        if (game.alreadyGuessed.includes(userGuess)){    
-        } else {
-            game.alreadyGuessed.push(userGuess);
-            var guessedLetters = 
-            "<p> "+ game.alreadyGuessed + "  </p>" ;
-            document.querySelector("#letters").innerHTML = guessedLetters;
-        }
-    }
+    // for (j=0; j <= game.alreadyGuessed.length; j++){
+    //     if (game.alreadyGuessed.includes(userGuess)){    
+    //     } else {
+    //         game.alreadyGuessed.push(userGuess);
+    //         var guessedLetters = 
+    //         "<p> "+ game.alreadyGuessed + "  </p>" ;
+    //         document.querySelector("#letters").innerHTML = guessedLetters;
+    //     }
+    // }
         
 if (game.characterArr.includes(userGuess)) {
     game.correctLetter++ ; 
@@ -98,15 +98,25 @@ if (game.characterArr.includes(userGuess)) {
     document.querySelector("#wins").innerHTML = "Wins: " + game.wins + " ";
     document.querySelector("#guessRemaining").innerHTML = "Guesses Remaining: " + game.guessLeft + " " ;
     document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " ;
-    //document.querySelector("#letters").innerHTML = game.alreadyGuessed + "  " + "  " + "  " ;   
+    document.querySelector("#letters").innerHTML = game.alreadyGuessed + "  " + "  " + "  " ;   
 
     } else {
-       game.guessLeft-- ;
+       //game.guessLeft-- ;
 
+       for (j=0; j <= game.alreadyGuessed.length; j++){
+        if (game.alreadyGuessed.includes(userGuess)){    
+        } else {
+            game.alreadyGuessed.push(userGuess);
+            game.guessLeft-- ;
+            var guessedLetters = 
+            "<p> "+ game.alreadyGuessed + "  </p>" ;
+            document.querySelector("#letters").innerHTML = guessedLetters;
+        }
+    }
     document.querySelector("#wins").innerHTML = "Wins: " + game.wins + " ";
     document.querySelector("#guessRemaining").innerHTML = "Guesses Remaining: " + game.guessLeft + " " ;
     document.querySelector("#alreadyGuessed").innerHTML =  " Letters Already Guessed: " + " " + " " 
-   // document.querySelector("#letters").innerHTML = game.alreadyGuessed + "  " + "  " + "  " ;   
+    document.querySelector("#letters").innerHTML = game.alreadyGuessed + "  " + "  " + "  " ;   
     }
 
 if (game.guessLeft === 0) {
