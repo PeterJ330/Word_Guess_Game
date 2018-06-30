@@ -9,18 +9,6 @@ var words = [
     "TEMPEST",
     "GALAGA"
    ]
-
-// Select from bonusWords array once user has solved all values in words array
-var bonusWords = [
-    "SPACE INVADERS",
-    "DONKEY KONG",
-    "PAC MAN",
-    "DIG DUG",
-    "MISSILE COMMAND",
-    "LUNAR LANDER",
-    "STREET FIGHTER",
-    "PAPER BOY"
-   ]
 // ================   variables   ========================================================================================================================================
 var game = { 
     wins: 0,
@@ -81,16 +69,6 @@ var userGuess = e.key.toUpperCase();
         document.querySelector("#game").innerHTML = displayWord;
         }
     }
-
-    // for (j=0; j <= game.alreadyGuessed.length; j++){
-    //     if (game.alreadyGuessed.includes(userGuess)){    
-    //     } else {
-    //         game.alreadyGuessed.push(userGuess);
-    //         var guessedLetters = 
-    //         "<p> "+ game.alreadyGuessed + "  </p>" ;
-    //         document.querySelector("#letters").innerHTML = guessedLetters;
-    //     }
-    // }
         
 if (game.characterArr.includes(userGuess)) {
     game.correctLetter++ ; 
