@@ -57,9 +57,11 @@ h5 {
             }
 
 
-.game {
+#game {
     color: gold;
-
+}
+#word {
+    letter-spacing: 10px;
 }
 
 #text {
