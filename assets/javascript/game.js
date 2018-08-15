@@ -33,15 +33,12 @@ document.onkeyup = function startGame(event) {
 
     // splits randWord string into an array named charArr
     game.characterArr = randWord.split("");
-    console.log(game.characterArr);
 
     // creates "var placeHolder" to repeat "var space" string an amount equal to "var randWord" string length
     game.placeHolder = game.space.repeat(randWord.length);
-    console.log(game.placeHolder);
 
     // creates an array of blanks "_" to display in place of the word being guessed
     game.substitutions = game.placeHolder.split("");
-    console.log(game.substitutions);
 
     // displays "var game.substitutions" in the html
     var displayWord =
@@ -54,11 +51,11 @@ document.onkeyup = function startGame(event) {
 
     //******** begins guessing portion of game *****************
     document.onkeyup = function doSecond(e) {
-        console.log(e.key);
+
+        if (e.which <= 90 && e.which >= 65){
 
         // creates userGuess and assigns value of e.key from onkeyUp
         var userGuess = e.key.toUpperCase();
-        console.log("User Guess: " + userGuess);
 
         for (i = 0; i < game.characterArr.length; i++) {
             if (userGuess === game.characterArr[i]) {
@@ -71,14 +68,12 @@ document.onkeyup = function startGame(event) {
 
         if (game.characterArr.includes(userGuess)) {
             game.correctLetter++;
-            console.log("Number Correct " + game.correctLetter);
             document.querySelector("#wins").innerHTML = "Wins: " + game.wins + " ";
             document.querySelector("#guessRemaining").innerHTML = "Guesses Remaining: " + game.guessLeft + " ";
             document.querySelector("#alreadyGuessed").innerHTML = " Letters Already Guessed: " + " " + " ";
             document.querySelector("#letters").innerHTML = game.alreadyGuessed + "  " + "  " + "  ";
 
         } else {
-            //game.guessLeft-- ;
 
             for (j = 0; j <= game.alreadyGuessed.length; j++) {
                 if (game.alreadyGuessed.includes(userGuess)) {
@@ -98,7 +93,6 @@ document.onkeyup = function startGame(event) {
 
         if (game.guessLeft === 0) {
             alert("YOU LOSE!");
-            console.log("YOU LOSE!");
             youLose();
         }
 
@@ -107,8 +101,6 @@ document.onkeyup = function startGame(event) {
             game.guessLeft = 6;
             game.correctLetter = 0;
             game.alreadyGuessed = [];
-            console.log("guessLeft: " + game.guessLeft);
-            console.log("correctLetter: " + game.correctLetter);
             alert("YOU WIN!");
             startGame(event);
 
@@ -129,6 +121,7 @@ document.onkeyup = function startGame(event) {
             }
 
         }
+    } else {}
 
     }
 }
